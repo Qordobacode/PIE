@@ -19,7 +19,8 @@ python3.6 word_edit_model.py \
   --do_lower_case=False \
   --path_inserts=$path_inserts \
   --path_multitoken_inserts=$path_multitoken_inserts \
-  --predict_checkpoint=PIE_ckpt/pie_model.ckpt
-  --use-tpu=True
+  --predict_checkpoint=PIE_ckpt/pie_model.ckpt \
+  --use-tpu=True \
+  --tpu-name=grpc://10.112.9.82:8470
   
   
