@@ -713,14 +713,11 @@ def main(_):
   multitoken_inserts = pickle.load(tf.gfile.Open(FLAGS.path_multitoken_inserts,"rb"))
   multitoken_insert_ids = wem_utils.list_to_ids(multitoken_inserts, tokenizer)
 
-  """
   tpu_cluster_resolver = None
   if FLAGS.use_tpu and FLAGS.tpu_name:
     tpu_cluster_resolver = tf.contrib.cluster_resolver.TPUClusterResolver(
         FLAGS.tpu_name, zone=FLAGS.tpu_zone, project=FLAGS.gcp_project)
-  """
-  tpu_cluster_resolver = tf.contrib.cluster_resolver.TPUClusterResolver(tpu='grpc://' + os.environ['COLAB_TPU_ADDR'])
-
+  
   is_per_host = tf.contrib.tpu.InputPipelineConfig.PER_HOST_V2
   run_config = tf.contrib.tpu.RunConfig(
       cluster=tpu_cluster_resolver,
